@@ -4,6 +4,10 @@
 package com.example.BikeSharingService;
 
 /**
+ * <pre>
+ * Bi Directional Streaming PRC
+ * </pre>
+ *
  * Protobuf type {@code BikeSharingService.ReserveAndUnlockBikeRequest}
  */
 public  final class ReserveAndUnlockBikeRequest extends
@@ -373,6 +377,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Bi Directional Streaming PRC
+   * </pre>
+   *
    * Protobuf type {@code BikeSharingService.ReserveAndUnlockBikeRequest}
    */
   public static final class Builder extends

@@ -5,7 +5,7 @@ package com.example.ParkingService;
 
 /**
  * <pre>
- * Request message containing the parking lot identifier
+ * Unary RPC method
  * </pre>
  *
  * Protobuf type {@code ParkingService.ParkingLotRequest}
@@ -276,7 +276,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * Request message containing the parking lot identifier
+   * Unary RPC method
    * </pre>
    *
    * Protobuf type {@code ParkingService.ParkingLotRequest}

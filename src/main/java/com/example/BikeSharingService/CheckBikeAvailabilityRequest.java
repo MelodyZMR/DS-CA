@@ -4,6 +4,10 @@
 package com.example.BikeSharingService;
 
 /**
+ * <pre>
+ *Unary RPC 
+ * </pre>
+ *
  * Protobuf type {@code BikeSharingService.CheckBikeAvailabilityRequest}
  */
 public  final class CheckBikeAvailabilityRequest extends
@@ -279,6 +283,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   *Unary RPC 
+   * </pre>
+   *
    * Protobuf type {@code BikeSharingService.CheckBikeAvailabilityRequest}
    */
   public static final class Builder extends

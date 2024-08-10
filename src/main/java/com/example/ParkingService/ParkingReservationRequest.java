@@ -5,7 +5,7 @@ package com.example.ParkingService;
 
 /**
  * <pre>
- *Request message containing the userID,parkinglotID,reservationTime
+ *Client Streaming RPC 
  * </pre>
  *
  * Protobuf type {@code ParkingService.ParkingReservationRequest}
@@ -378,7 +378,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   *Request message containing the userID,parkinglotID,reservationTime
+   *Client Streaming RPC 
    * </pre>
    *
    * Protobuf type {@code ParkingService.ParkingReservationRequest}

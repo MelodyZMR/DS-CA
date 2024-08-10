@@ -4,6 +4,10 @@
 package com.example.PublicTransportationService;
 
 /**
+ * <pre>
+ *Server Streaming RPC
+ * </pre>
+ *
  * Protobuf type {@code PublicTransportationService.DispatchVehicleRequest}
  */
 public  final class DispatchVehicleRequest extends
@@ -322,6 +326,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   *Server Streaming RPC
+   * </pre>
+   *
    * Protobuf type {@code PublicTransportationService.DispatchVehicleRequest}
    */
   public static final class Builder extends

@@ -4,10 +4,6 @@
 package com.example.ParkingService;
 
 /**
- * <pre>
- * Response message containing the status of all parking spaces
- * </pre>
- *
  * Protobuf type {@code ParkingService.ParkingLotResponse}
  */
 public  final class ParkingLotResponse extends
@@ -276,10 +272,6 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * <pre>
-   * Response message containing the status of all parking spaces
-   * </pre>
-   *
    * Protobuf type {@code ParkingService.ParkingLotResponse}
    */
   public static final class Builder extends

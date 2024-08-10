@@ -2,6 +2,8 @@ package com.example.ParkingService;
 
 import java.io.IOException;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import io.grpc.Server;
@@ -52,15 +54,18 @@ public class ParkingService extends ParkingServiceGrpc.ParkingServiceImplBase{
 
 		@Override
 		public StreamObserver<ParkingReservationRequest> bookParkingSpaces(StreamObserver<ParkingReservationResponse> responseObserver) {
-	        return new StreamObserver<ParkingReservationRequest>() {
+		    //Use to store all requests
+			List<ParkingReservationRequest> reserveList = new ArrayList<>();
+
+			return new StreamObserver<ParkingReservationRequest>() {
+				
+				//// when a new request received , put it into the array
 			 @Override
 	            public void onNext(ParkingReservationRequest request) {
-	                ParkingReservationResponse response = ParkingReservationResponse.newBuilder()
-	                        .setConfirmationId("ConfirmationID12345")
-	                        .setReservationStatus("SUCCESS")
-	                        .build();
-
-	                responseObserver.onNext(response);
+				 System.out.println(LocalTime.now().toString() + ": received a ParkingReservationRequest for parking lot: " 
+                         + request.getParkingLotId());
+				 reserveList.add(request);
+	               
 	            }
 			
 			@Override
@@ -71,13 +76,17 @@ public class ParkingService extends ParkingServiceGrpc.ParkingServiceImplBase{
 
 			@Override
 			public void onCompleted() {
-				responseObserver.onCompleted();
+				 System.out.println(LocalTime.now().toString() + ": receiving reservation completed ");
 			}
+			  int totalReservations = reserveList.size();
+			  ParkingReservationResponse response = ParkingReservationResponse.newBuilder()
+                      .setConfirmationId("ConfirmationID12345")
+                      .setReservationStatus("SUCCESS")
+                      .build();
+			  
 			
-			
+			};
 			
 		};
 	
-		};
-}
-
+		}

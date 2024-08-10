@@ -142,14 +142,14 @@ import io.grpc.stub.StreamObserver;
     JPanel panel = new JPanel();
     BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.X_AXIS);
 
-    JLabel label = new JLabel("Enter Vehicle ID:");
+    JLabel label = new JLabel("Vehicle ID:");
    panel.add(label);
    panel.add(Box.createRigidArea(new Dimension(10, 0)));
    realTimeInfoRequest = new JTextField("", 10);
    panel.add(realTimeInfoRequest);
    panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-   JButton button = new JButton("Get Real-Time Info");
+   JButton button = new JButton("Real-Time Info");
    button.addActionListener(this);
    panel.add(button);
    panel.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -166,14 +166,14 @@ import io.grpc.stub.StreamObserver;
      JPanel panel = new JPanel();
      BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.X_AXIS);
 
-     JLabel label = new JLabel("Enter Vehicle ID:");
+     JLabel label = new JLabel("Vehicle Type:");
      panel.add(label);
      panel.add(Box.createRigidArea(new Dimension(10, 0)));
      DispatchVehicleRequest = new JTextField("", 10);
      panel.add(DispatchVehicleRequest);
      panel.add(Box.createRigidArea(new Dimension(10, 0)));
 
-     JButton button = new JButton("Get Dispatch Vehicle");
+     JButton button = new JButton("Dispatch Vehicle");
      button.addActionListener(this);
      panel.add(button);
      panel.add(Box.createRigidArea(new Dimension(10, 0)));
@@ -190,7 +190,7 @@ import io.grpc.stub.StreamObserver;
       JPanel panel = new JPanel();
       BoxLayout boxlayout = new BoxLayout(panel, BoxLayout.X_AXIS);
 
-      JLabel label = new JLabel("Check Bike Availability:");
+      JLabel label = new JLabel("StationId:");
       panel.add(label);
       panel.add(Box.createRigidArea(new Dimension(10, 0)));
       checkBikeAvailabilityRequest = new JTextField("", 10);
@@ -237,32 +237,34 @@ import io.grpc.stub.StreamObserver;
    @Override
    public void actionPerformed(ActionEvent e) {
      JButton button = (JButton) e.getSource();
-     String label = button.getText();
+     String label = button.getText(); 
+     
+     switch (label) {
+     case "Get Parking Availability":
+     handlegetparkingAvailabilityResponse();
+     break;
+     case "Reserve Parking":
+     handlegetParkingReservationRequestResponse();
+     break;
+     case "Real-Time Info":
+     handlegetstopArrivalTimeResponse();
+     break;
+     case "Dispatch Vehicle":
+     handlegetDispatchVehicleResponse();
+     break;	
+     case "Check Bike Availability":
+     handleBikeSharingService1();
+     break;
+     case "Reserve and Unlock":
+     handleBikeSharingService2();
+     break;
+     }
 
-switch (label) {
-case "Get Parking Availability":
-handlegetparkingAvailabilityResponse();
-break;
-case "Reserve Parking":
-handlegetParkingReservationRequestResponse();
-break;
-case "Get Real-Time Info":
-handlegetstopArrivalTimeResponse();
-break;
-case "Get Dispatch Vehicle":
-handlegetDispatchVehicleResponse();
-break;	
-case "Check Bike Availability":
-handleBikeSharingService1();
-break;
-case "Reserve and Unlock":
-handleBikeSharingService2();
-break;
-}
 }
 
   //GRPC Client
     private void handlegetparkingAvailabilityResponse() {
+    	System.out.println("ParkingService to be invoked with " + parkingLotRequest.getText());
        ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50053).usePlaintext().build();
        ParkingServiceGrpc.ParkingServiceBlockingStub blockingStub = ParkingServiceGrpc.newBlockingStub(channel);
 
@@ -325,7 +327,8 @@ break;
 
 
     private void handlegetstopArrivalTimeResponse() {
-      ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
+    	System.out.println("PublicTransportationService to be invoked with " + realTimeInfoRequest.getText());
+      ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50055).usePlaintext().build();
       PublicTransportationServiceGrpc.PublicTransportationServiceBlockingStub blockingStub =PublicTransportationServiceGrpc.newBlockingStub(channel);
 
       GetRealTimeInfoRequest request = GetRealTimeInfoRequest.newBuilder()
@@ -340,7 +343,7 @@ break;
 
 
      private void handlegetDispatchVehicleResponse() {
-         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50052).usePlaintext().build();
+         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50055).usePlaintext().build();
         PublicTransportationServiceGrpc.PublicTransportationServiceBlockingStub blockingStub =PublicTransportationServiceGrpc.newBlockingStub(channel);
 
          GetRealTimeInfoRequest request = GetRealTimeInfoRequest.newBuilder()
@@ -356,6 +359,7 @@ break;
 
 
    private void handleBikeSharingService1() {
+	   System.out.println("BikeSharingServie to be invoked with " + checkBikeAvailabilityRequest.getText());
      ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 50054).usePlaintext().build();
      BikeSharingServiceGrpc.BikeSharingServiceBlockingStub blockingStub = BikeSharingServiceGrpc.newBlockingStub(channel);
 

@@ -4,6 +4,10 @@
 package com.example.PublicTransportationService;
 
 /**
+ * <pre>
+ *Unary RPC
+ * </pre>
+ *
  * Protobuf type {@code PublicTransportationService.GetRealTimeInfoRequest}
  */
 public  final class GetRealTimeInfoRequest extends
@@ -271,6 +275,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   *Unary RPC
+   * </pre>
+   *
    * Protobuf type {@code PublicTransportationService.GetRealTimeInfoRequest}
    */
   public static final class Builder extends

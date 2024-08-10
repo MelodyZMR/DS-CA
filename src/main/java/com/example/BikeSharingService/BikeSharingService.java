@@ -58,19 +58,18 @@ public class BikeSharingService extends BikeSharingServiceGrpc.BikeSharingServic
 	                System.out.println(LocalTime.now().toString() + ": receiving reserveAndUnlockBike request: "
 	                        + "user_id: " + userId + ", station_id: " + stationId + ", reservation_time: " + reservationTime);
 				
-				//Get the response
+				//Use for loop to see how a server might handle multiple vehicle scheduling requests.
 	                
-	    			
+	                Random rand = new Random();
 	                for (int i = 0; i < 5; i++) {
 					
-				
-			
+	                	 String randomValueString = Integer.toString(rand.nextInt());
 				 ReserveAndUnlockBikeResponse response = ReserveAndUnlockBikeResponse.newBuilder()
-					        .setReservationId("Reservation" + (i + 1))
+					        .setReservationId(randomValueString)
 					        .setStatusCode(2)
-					        .setBikeId("BikeId" + (i + 1))
-					        .setUnlockExpirationTime((i + 1) * 5 + " minutes")
-					        .setUpdateMessage("Reservation update" + (i + 1))
+					        .setBikeId(randomValueString)
+					        .setUnlockExpirationTime(randomValueString)
+					        .setUpdateMessage(randomValueString)
 					        .build();
 	                responseObserver.onNext(response);
 	            }
